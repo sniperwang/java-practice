@@ -1,24 +1,29 @@
 package com.springdemo.controller;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class HelloWorldController implements Controller {
+@Controller
+public class IndexController{
 
-    private static Log logger = LogFactory.getLog(HelloWorldController.class);
+    private static Log logger = LogFactory.getLog(IndexController.class);
 
-    @Override
+    @RequestMapping("/index")
     public ModelAndView handleRequest(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
-        ModelAndView mv = new ModelAndView();
-        mv.addObject("message", "Hello World!");
-        mv.setViewName("/WEB-INF/jsp/hello.jsp");
+        ModelAndView mv = new ModelAndView("index");
+        mv.addObject("message", "Hello World!(●'◡'●)");
+        return mv;
+    }
+
+    @RequestMapping("/")
+    public ModelAndView index() {
+        ModelAndView mv = new ModelAndView("redirect:/index");
         return mv;
     }
 }
