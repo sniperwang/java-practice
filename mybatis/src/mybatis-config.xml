@@ -19,5 +19,8 @@
     </environments>
     <mappers>
         <mapper resource="com/mybatis/pojo/Category.xml" />
+        <mapper resource="com/mybatis/pojo/Product.xml" />
+        <mapper resource="com/mybatis/pojo/Order.xml" />
+        <mapper resource="com/mybatis/pojo/OrderItem.xml" />
     </mappers>
 </configuration>

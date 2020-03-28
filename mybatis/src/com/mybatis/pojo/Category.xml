@@ -25,4 +25,28 @@
     <select id="listCategoryByIdAndName" resultType="Category">
         select * from category_ where id > #{id} and name like concat('%', #{0}, '%')
     </select>
+
+    <resultMap id="categoryBean" type="Category">
+        <id column="cid" property="id" />
+        <result column="cname" property="name" />
+        <collection property="products" ofType="Product">
+            <id column="pid" property="id" />
+            <result column="pname" property="name" />
+            <result column="price" property="price" />
+        </collection>
+    </resultMap>
+
+    <select id="listCategoryWithProduct" resultMap="categoryBean">
+        select
+        c.*,
+        p.*,
+        c.id 'cid',
+        c.name 'cname',
+        p.id 'pid',
+        p.name 'pname'
+        from
+        category_ c left join product_ p
+        on
+        c.id = p.cid
+    </select>
 </mapper>

@@ -1,8 +1,11 @@
 package com.mybatis.pojo;
 
+import java.util.List;
+
 public class Category {
     private int id;
     private String name;
+    List<Product> products;
 
     public int getId() {
         return id;
@@ -18,5 +21,17 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+    public String toString() {
+        return "Category [id=" + id + ", name=" + name + "]";
     }
 }
